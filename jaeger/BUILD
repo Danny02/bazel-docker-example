@@ -4,7 +4,7 @@ container_image(
     name = "agent",
     base = "@alpine_linux_amd64//image",
     files = ["@jaeger_bin//:jaeger-agent"],
-    entrypoint = ["/jaeger-1.13.0-linux-amd64/jaeger-agent"],
+    entrypoint = ["/jaeger-agent"],
     ports = [
         "5775/udp",
         "6831/udp",
@@ -17,7 +17,7 @@ container_image(
     name = "collector",
     base = "@alpine_linux_amd64//image",
     files = ["@jaeger_bin//:jaeger-collector"],
-    entrypoint = ["/jaeger-1.13.0-linux-amd64/jaeger-collector"],
+    entrypoint = ["/jaeger-collector"],
     ports = ["14267", "14250"]
 )
 
@@ -25,7 +25,7 @@ container_image(
     name = "query",
     base = "@alpine_linux_amd64//image",
     files = ["@jaeger_bin//:jaeger-query"],
-    entrypoint = ["/jaeger-1.13.0-linux-amd64/jaeger-query"],
+    entrypoint = ["/jaeger-query"],
     ports = ["16686"]
 )
 
