@@ -32,10 +32,11 @@ container_pull(
     tag = "3.10.1",
 )
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
-http_file(
-    name = "jaeger",
-    downloaded_file_path = "jaeger.tar.gz",
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "jaeger_bin",
     urls = ["https://github.com/jaegertracing/jaeger/releases/download/v1.13.0/jaeger-1.13.0-linux-amd64.tar.gz"],
     sha256 = "2d65c2096dd0c5424c546aa18c3aacbeaa74f9dee86e348af7446394a69f7c7e",
+    build_file_content = "exports_files(glob([\"*\"]))",
+    strip_prefix = "jaeger-1.13.0-linux-amd64",
 )
